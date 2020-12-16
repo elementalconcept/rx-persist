@@ -3,14 +3,14 @@
 
 module.exports = function (config) {
   config.set({
-    basePath: './src',
-    frameworks: [ 'jasmine', 'karma-typescript' ],
+    basePath: '',
+    frameworks: [ 'jasmine', 'webpack' ],
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
-      require('karma-typescript')
+      require('karma-webpack')
     ],
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
@@ -21,12 +21,12 @@ module.exports = function (config) {
       fixWebpackSourcePaths: true
     },
     files: [
-      '**/*.spec.ts'
+      { pattern: 'src/test.ts', watched: false }
     ],
     preprocessors: {
-      '**/*.ts': 'karma-typescript'
+      'src/test.ts': [ 'webpack' ]
     },
-    reporters: [ 'progress', 'kjhtml', 'karma-typescript' ],
+    reporters: [ 'progress', 'kjhtml' ],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
@@ -36,6 +36,21 @@ module.exports = function (config) {
       ChromeHeadlessCustom: {
         base: 'ChromeHeadless',
         flags: [ '--no-sandbox' ]
+      }
+    },
+    webpack: {
+      resolve: {
+        extensions: [ '.ts', '.js' ]
+      },
+
+      module: {
+        rules: [
+          {
+            test: /\.tsx?$/,
+            use: 'ts-loader',
+            exclude: /node_modules/
+          }
+        ]
       }
     },
     singleRun: false
