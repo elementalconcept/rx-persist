@@ -1,0 +1,25 @@
+{
+  "name": "@elemental-concept/rx-persist",
+  "version": "0.0.1",
+  "description": "A collection of RxJS subjects which persist their state",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elementalconcept/grappa-jwt.git"
+  },
+  "keywords": [
+    "rxjs",
+    "reactivex",
+    "persistence",
+    "storage"
+  ],
+  "author": "Elemental Concept",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/elementalconcept/grappa-jwt/issues"
+  },
+  "homepage": "https://github.com/elementalconcept/grappa-jwt#readme"
+}
