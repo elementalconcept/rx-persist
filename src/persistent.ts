@@ -8,11 +8,11 @@ export function persistent<T, S extends Subject<T>>(subject: S,
                                                     key: string | string[],
                                                     storage: StorageDriver = localStorageDriver): S {
 
-  const next = subject.next;
+  const next = subject.next.bind(subject);
   const storageKey = getStorageKey(key);
 
-  load(storageKey, next.bind(subject), storage);
-  subject.next = (value: T) => save(storageKey, storage, value).subscribe(() => subject.next(value));
+  load(storageKey, next, storage);
+  subject.next = (value: T) => save(storageKey, storage, value).subscribe(() => next(value));
 
   return subject;
 }

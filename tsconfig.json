@@ -26,6 +26,7 @@
     ]
   },
   "exclude": [
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "./ng-sample-app/**/*.*"
   ]
 }
