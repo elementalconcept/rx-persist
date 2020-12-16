@@ -24,6 +24,9 @@
     "url": "https://github.com/elementalconcept/grappa-jwt/issues"
   },
   "homepage": "https://github.com/elementalconcept/grappa-jwt#readme",
+  "dependencies": {
+    "rxjs": "^6.6.3"
+  },
   "devDependencies": {
     "@types/jasmine": "^3.6.2",
     "@types/jasminewd2": "^2.0.8",

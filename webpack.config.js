@@ -11,7 +11,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [ '.ts', '.js' ],
+    extensions: [ '.ts', '.js' ]
   },
 
   module: {
@@ -19,12 +19,27 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-    ],
+        exclude: /node_modules/
+      }
+    ]
+  },
+
+  optimization: {
+    minimize: false
   },
 
   externals: {
-
+    'rxjs': {
+      commonjs: 'rxjs',
+      commonjs2: 'rxjs',
+      amd: 'rxjs',
+      root: '_'
+    },
+    'rxjs/operators': {
+      commonjs: 'rxjs/operators',
+      commonjs2: 'rxjs/operators',
+      amd: 'rxjs/operators',
+      root: '_'
+    }
   }
 };
