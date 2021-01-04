@@ -1,7 +1,7 @@
 {
   "name": "@elemental-concept/rx-persist",
   "version": "0.0.0",
-  "description": "A collection of RxJS subjects which persist their state",
+  "description": "Persistence operator for RxJS",
   "main": "index.js",
   "scripts": {
     "test": "karma start karma.conf.js --single-run",

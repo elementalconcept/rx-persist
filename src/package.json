@@ -1,7 +1,7 @@
 {
   "name": "@elemental-concept/rx-persist",
   "version": "0.0.1",
-  "description": "A collection of RxJS subjects which persist their state",
+  "description": "Persistence operator for RxJS",
   "main": "index.js",
   "repository": {
     "type": "git",
