@@ -1,7 +1,7 @@
 # rx-persist
 
-`rx-persist` provides a persistence operator for RxJS subjects. It automatically saves each event emission into selected
-storage and restores last emission from storage on Subject creation.
+`@elemental-concept/rx-persist` provides a persistence operator for RxJS subjects. It automatically saves each event
+emission into selected storage and restores last emission from storage on Subject creation.
 
 ## Use-case example
 
