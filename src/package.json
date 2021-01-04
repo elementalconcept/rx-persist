@@ -1,0 +1,25 @@
+{
+  "name": "@elemental-concept/rx-persist",
+  "version": "0.0.1",
+  "description": "A collection of RxJS subjects which persist their state",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elementalconcept/rx-persist.git"
+  },
+  "keywords": [
+    "rxjs",
+    "reactivex",
+    "persistence",
+    "storage"
+  ],
+  "author": "Elemental Concept",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/elementalconcept/rx-persist/issues"
+  },
+  "homepage": "https://github.com/elementalconcept/rx-persist#readme",
+  "peerDependencies": {
+    "rxjs": "^6"
+  }
+}

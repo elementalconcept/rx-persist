@@ -1,11 +1,18 @@
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+
+const distDir = path.resolve(__dirname, 'dist');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: [
+    './src/index.ts',
+    './src/package.json'
+  ],
 
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: distDir,
     library: 'rx-persist',
     libraryTarget: 'umd'
   },
@@ -24,10 +31,6 @@ module.exports = {
     ]
   },
 
-  optimization: {
-    minimize: false
-  },
-
   externals: {
     'rxjs': {
       commonjs: 'rxjs',
@@ -41,5 +44,15 @@ module.exports = {
       amd: 'rxjs/operators',
       root: '_'
     }
-  }
+  },
+
+  plugins: [
+    new CleanWebpackPlugin(),
+
+    new CopyPlugin({
+      patterns: [
+        { from: './src/package.json', to: distDir }
+      ]
+    })
+  ]
 };

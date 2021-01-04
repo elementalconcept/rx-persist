@@ -1,16 +1,17 @@
 {
   "name": "@elemental-concept/rx-persist",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "A collection of RxJS subjects which persist their state",
   "main": "index.js",
   "scripts": {
     "test": "karma start karma.conf.js --single-run",
     "test-watch": "karma start karma.conf.js",
-    "build": "webpack"
+    "build-prod": "webpack --config webpack.prod.js",
+    "build-dev": "webpack --config webpack.dev.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/elementalconcept/grappa-jwt.git"
+    "url": "git+https://github.com/elementalconcept/rx-persist.git"
   },
   "keywords": [
     "rxjs",
@@ -21,15 +22,17 @@
   "author": "Elemental Concept",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/elementalconcept/grappa-jwt/issues"
+    "url": "https://github.com/elementalconcept/rx-persist/issues"
   },
-  "homepage": "https://github.com/elementalconcept/grappa-jwt#readme",
+  "homepage": "https://github.com/elementalconcept/rx-persist#readme",
   "dependencies": {
     "rxjs": "^6.6.3"
   },
   "devDependencies": {
     "@types/jasmine": "^3.6.2",
     "@types/jasminewd2": "^2.0.8",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^7.0.0",
     "jasmine-core": "^3.6.0",
     "jasmine-spec-reporter": "^6.0.0",
     "karma": "^5.2.3",
