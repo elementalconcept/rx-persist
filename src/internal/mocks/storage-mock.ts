@@ -1,5 +1,5 @@
 export class StorageMock implements Storage {
-  private readonly storage: any = {};
+  readonly storage: any = {};
 
   readonly length = 0;
 

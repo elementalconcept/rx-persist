@@ -8,7 +8,7 @@ export class DOMStorageDriver implements StorageDriver {
     try {
       const value = this.storage.getItem(key);
 
-      if (value !== null) {
+      if (typeof value === 'string') {
         return JSON.parse(value);
       }
 

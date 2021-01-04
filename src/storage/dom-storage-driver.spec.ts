@@ -2,7 +2,7 @@ import { DOMStorageDriver, localStorageDriver, sessionStorageDriver } from './do
 import { StorageMock } from '../internal/mocks/storage-mock';
 
 describe('DOMStorageDriver', () => {
-  let storageMock: Storage;
+  let storageMock: StorageMock;
   let driver: DOMStorageDriver;
 
   beforeEach(() => {
@@ -25,6 +25,11 @@ describe('DOMStorageDriver', () => {
       storageMock.setItem('removeTest', JSON.stringify('removed value'));
       driver.remove('removeTest');
       expect(storageMock.getItem('removeTest')).toBeNull();
+    });
+
+    it('should not fail when data is corrupted', () => {
+      storageMock.storage[ 'failTest' ] = 123;
+      expect(driver.get('failTest')).toBeNull();
     });
   });
 
