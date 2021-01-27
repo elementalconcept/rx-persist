@@ -46,6 +46,10 @@ module.exports = {
     }
   },
 
+  optimization:{
+    usedExports: false
+  },
+
   plugins: [
     new CleanWebpackPlugin(),
 
