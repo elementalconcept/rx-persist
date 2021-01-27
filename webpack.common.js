@@ -6,15 +6,13 @@ const distDir = path.resolve(__dirname, 'dist');
 
 module.exports = {
   entry: [
-    './src/index.ts',
-    './src/package.json'
+    './src/index.ts'
   ],
 
   output: {
     filename: 'index.js',
     path: distDir,
-    library: 'rx-persist',
-    libraryTarget: 'umd'
+    libraryTarget: 'commonjs'
   },
 
   resolve: {
@@ -46,9 +44,7 @@ module.exports = {
     }
   },
 
-  optimization:{
-    usedExports: false
-  },
+  optimization: {},
 
   plugins: [
     new CleanWebpackPlugin(),

@@ -1,6 +1,6 @@
 {
   "name": "@elemental-concept/rx-persist",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "Persistence operator for RxJS",
   "main": "index.js",
   "repository": {
