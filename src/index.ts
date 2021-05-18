@@ -1,3 +1,3 @@
 export * from './models';
 export * from './storage';
-export * from './persistent';
+export * from './operators/persistent';
