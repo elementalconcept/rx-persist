@@ -1,8 +1,8 @@
 import { Subject } from 'rxjs';
 
-import { StorageDriver } from './models';
-import { localStorageDriver } from './storage';
-import { getStorageKey, load, save } from './internal/storage-access';
+import { StorageDriver } from '../models';
+import { localStorageDriver } from '../storage';
+import { getStorageKey, load, save } from '../internal/storage-access';
 
 export function persistent<T, S extends Subject<T>>(subject: S,
                                                     key: string | string[],

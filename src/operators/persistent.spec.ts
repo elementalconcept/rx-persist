@@ -1,7 +1,7 @@
 import { BehaviorSubject, Subject } from 'rxjs';
 
-import { StorageMock } from './internal/mocks/storage-mock';
-import { DOMStorageDriver } from './storage';
+import { StorageMock } from '../internal/mocks/storage-mock';
+import { DOMStorageDriver } from '../storage';
 import { persistent } from './persistent';
 
 describe('persistent', () => {

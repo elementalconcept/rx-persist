@@ -1,7 +1,8 @@
 # rx-persist
 
 `@elemental-concept/rx-persist` provides a persistence operator for RxJS subjects. It automatically saves each event
-emission into selected storage and restores last emission from storage on Subject creation.
+emission into selected storage and restores last emission from storage on Subject creation. Additionally, provides
+storage versioning with `persistentAndVersioned` operator.
 
 ## Use-case example
 
@@ -94,6 +95,33 @@ function persistent<T, S extends Subject<T>>(subject: S, key: string | string[],
 * `key` - key to use to read and write data changes into the storage.
 * `storage` - optionally specify a storage to use. `window.localStorage` is used by default.
 
+### persistentAndVersioned()
+
+```typescript
+function persistentAndVersioned<T, S extends Subject<T>>(subject: S, key: string | string[], options: VersionedOptions): S;
+```
+
+* `subject` - specifies a subject to add persistence to.
+* `key` - key to use to read and write data changes into the storage.
+* `options` - set of options for versioning.
+
+### VersionedOptions
+
+```typescript
+interface VersionedOptions {
+  currentVersion: number;
+  versionKey: string | string[];
+  migrate: (version: number, value: any) => any;
+
+  storage?: StorageDriver;
+}
+```
+
+* `currentVersion` - specifies current version application expects.
+* `versionKey` - storage key to fetch version information.
+* `migrate` - method to run migrations between versions.
+* `storage` - same as in `persistent()`.
+
 ### StorageDriver
 
 ```typescript
@@ -136,3 +164,50 @@ const sessionStorageDriver = new DOMStorageDriver(localStorage);
 ```
 
 Pre-defined `StorageDriver` which uses `window.localStorage` as a back-end.
+
+## Versioning
+
+Data structure saved in a persistent Subject might change over life span of your application. To avoid data corruption
+`persistentAndVersioned()` operator is introduced to be used instead of `persistent()`. Versioning starts with 0 and
+gets incremented by 1 on each data structure change.
+
+When `persistentAndVersioned()` is called it will load currently saved version from storage from `versionKey` and will
+compare this value to `currentVersion`. It will then call `migrate()` multiple times passing current version and
+incrementing it on success. For example, `currentVersion` is set to `7`, but version number obtained from `versionKey`
+is `5`. In this case `migrate()` will be called twice: for version `5` and version `6`.
+
+`migrate()` should check current version, apply data transformations and return the result. Result will be immediately
+saved into storage and current version number will be bumped by 1.
+
+### Example
+
+Let's assume the following scenario:
+
+1. When the app was created, subject contained an object with just one field - `name`.
+2. After some time new field was added - `id`.
+3. Finally, data structure was updated to also include user type in a field called `type`.
+4. Most recent version is thus number `2` and there should be two migrations: from 0 to 1 and from 1 to 2.
+
+```typescript
+persistentAndVersioned<string, Subject<string>>(
+  new BehaviorSubject({ id: 1, type: 'GUEST', name: 'Guest' }),
+  'user',
+  {
+    currentVersion: 2,
+    versionKey: 'userVersion',
+    migrate: (version: number, value: any) => {
+      switch (version) {
+        case 0:
+          value.id = 1;
+          break;
+
+        case 1:
+          value.type = 'GUEST';
+          break;
+      }
+
+      return value;
+    }
+  })
+  .subscribe();
+```

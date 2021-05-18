@@ -21,6 +21,21 @@ export function load<T>(key: string, next: (value: T) => void, storage: StorageD
   }
 }
 
+export function loadAsObservable<T>(key: string, storage: StorageDriver): Observable<T | null> {
+  const result = storage.get<T>(key);
+
+  if (result instanceof Observable) {
+    return result.pipe(take(1));
+  }
+
+  if (typeof (result as Promise<T>)?.then === 'function') {
+    return from(result as Promise<T>);
+  }
+
+  // @ts-ignore
+  return of(result);
+}
+
 export function save<T>(key: string, storage: StorageDriver, value: T): Observable<any> {
   const result = storage.set(key, value);
 
