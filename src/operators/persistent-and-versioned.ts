@@ -1,5 +1,5 @@
 import { from, Subject } from 'rxjs';
-import { concatMap, filter, last, map, switchMap } from 'rxjs/operators';
+import { concatMap, filter, map, switchMap, takeLast } from 'rxjs/operators';
 
 import { VersionedOptions } from '../models';
 import { getStorageKey, load, loadAsObservable, save } from '../internal/storage-access';
@@ -26,9 +26,9 @@ export function persistentAndVersioned<T, S extends Subject<T>>(subject: S,
           concatMap(value => save(storageKey, storage, value)),
           concatMap(() => save(versionKey, storage, version)))),
 
-      last()
-    )
-    .subscribe(() => load(storageKey, next, storage));
+      takeLast(1))
+
+    .subscribe({ complete: () => load(storageKey, next, storage) });
 
   subject.next = (value: T) => save(storageKey, storage, value).subscribe(() => next(value));
 
