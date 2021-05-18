@@ -7,7 +7,7 @@ import { localStorageDriver } from '../storage';
 
 export function persistentAndVersioned<T, S extends Subject<T>>(subject: S,
                                                                 key: string | string[],
-                                                                options: VersionedOptions) {
+                                                                options: VersionedOptions): S {
   const next = subject.next.bind(subject);
   const storage = options.storage !== undefined ? options.storage : localStorageDriver;
   const storageKey = getStorageKey(key);
