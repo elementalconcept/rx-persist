@@ -80,6 +80,7 @@ describe('persistentAndVersioned', () => {
     scheduler.run(({ expectObservable }) => {
       expectObservable(persistentAndVersioned<string, Subject<string>>(new BehaviorSubject('default text'), key, options))
         .toBe('a', { a: { label: 'Hello!', code: 'hello-message' } });
+      expect(driver.get(options.versionKey as string)).toBe(3);
     });
   });
 });

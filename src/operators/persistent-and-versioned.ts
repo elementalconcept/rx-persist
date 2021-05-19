@@ -24,7 +24,7 @@ export function persistentAndVersioned<T, S extends Subject<T>>(subject: S,
         .pipe(
           map(value => options.migrate(version, value)),
           concatMap(value => save(storageKey, storage, value)),
-          concatMap(() => save(versionKey, storage, version)))),
+          concatMap(() => save(versionKey, storage, version + 1)))),
 
       takeLast(1))
 
