@@ -1,5 +1,6 @@
 import { DOMStorageDriver, localStorageDriver, sessionStorageDriver } from './dom-storage-driver';
-import { StorageAccessMock } from '../internal/mocks/storage-access.mock';
+
+import { StorageAccessMock } from '../internal';
 
 describe('DOMStorageDriver', () => {
   let storageMock: StorageAccessMock;

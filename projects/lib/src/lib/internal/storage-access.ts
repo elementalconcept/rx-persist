@@ -32,8 +32,7 @@ export function loadAsObservable<T>(key: string, storage: StorageDriverTypes): O
     return from(result as Promise<T>);
   }
 
-  // @ts-ignore
-  return of(result);
+  return of(result as T);
 }
 
 export function save<T>(key: string, storage: StorageDriverTypes, value: T): Observable<any> {

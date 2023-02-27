@@ -2,9 +2,12 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { TestScheduler } from 'rxjs/testing';
 
 import { persistentAndVersioned } from './persistent-and-versioned';
+
 import { DOMStorageDriver } from '../storage';
-import { StorageAccessMock } from '../internal/mocks/storage-access.mock';
+
 import { VersionedOptionsTypes } from '../types';
+
+import { StorageAccessMock } from '../internal';
 
 describe('persistentAndVersioned', () => {
   const key = 'key';
