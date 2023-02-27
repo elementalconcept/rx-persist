@@ -1,9 +1,9 @@
-import { StorageDriverTypes } from './storage-driver.types';
+import { StorageDriver } from './storage-driver.types';
 
-export interface VersionedOptionsTypes {
+export interface VersionedOptions {
   currentVersion: number;
   versionKey: string | string[];
   migrate: (version: number, value: any) => any;
 
-  storage?: StorageDriverTypes;
+  storage?: StorageDriver;
 }

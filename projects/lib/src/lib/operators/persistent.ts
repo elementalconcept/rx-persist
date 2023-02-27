@@ -1,6 +1,6 @@
 import { Subject } from 'rxjs';
 
-import { StorageDriverTypes } from '../types';
+import { StorageDriver } from '../types';
 
 import { localStorageDriver } from '../storage';
 
@@ -8,7 +8,7 @@ import { getStorageKey, load, save } from '../internal';
 
 export function persistent<T, S extends Subject<T>>(subject: S,
                                                     key: string | string[],
-                                                    storage: StorageDriverTypes = localStorageDriver): S {
+                                                    storage: StorageDriver = localStorageDriver): S {
 
   const next = subject.next.bind(subject);
 

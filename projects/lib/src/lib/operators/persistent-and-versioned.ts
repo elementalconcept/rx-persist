@@ -3,13 +3,13 @@ import { concatMap, filter, map, switchMap, takeLast } from 'rxjs/operators';
 
 import { getStorageKey, load, loadAsObservable, save } from '../internal';
 
-import { VersionedOptionsTypes } from '../types';
+import { VersionedOptions } from '../types';
 
 import { localStorageDriver } from '../storage';
 
 export function persistentAndVersioned<T, S extends Subject<T>>(subject: S,
                                                                 key: string | string[],
-                                                                options: VersionedOptionsTypes): S {
+                                                                options: VersionedOptions): S {
   const next = subject.next.bind(subject);
 
   const storage = options.storage !== undefined ? options.storage : localStorageDriver;

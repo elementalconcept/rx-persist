@@ -1,9 +1,9 @@
 import { from, Observable, of } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { StorageDriverTypes } from '../types';
+import { StorageDriver } from '../types';
 
-export function load<T>(key: string, next: (value: T) => void, storage: StorageDriverTypes) {
+export function load<T>(key: string, next: (value: T) => void, storage: StorageDriver) {
   const result = storage.get(key);
 
   if (result instanceof Observable) {
@@ -21,7 +21,7 @@ export function load<T>(key: string, next: (value: T) => void, storage: StorageD
   }
 }
 
-export function loadAsObservable<T>(key: string, storage: StorageDriverTypes): Observable<T | null> {
+export function loadAsObservable<T>(key: string, storage: StorageDriver): Observable<T | null> {
   const result = storage.get<T>(key);
 
   if (result instanceof Observable) {
@@ -35,7 +35,7 @@ export function loadAsObservable<T>(key: string, storage: StorageDriverTypes): O
   return of(result as T);
 }
 
-export function save<T>(key: string, storage: StorageDriverTypes, value: T): Observable<any> {
+export function save<T>(key: string, storage: StorageDriver, value: T): Observable<any> {
   const result = storage.set(key, value);
 
   if (result instanceof Observable) {

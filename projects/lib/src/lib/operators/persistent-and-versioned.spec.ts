@@ -5,7 +5,7 @@ import { persistentAndVersioned } from './persistent-and-versioned';
 
 import { DOMStorageDriver } from '../storage';
 
-import { VersionedOptionsTypes } from '../types';
+import { VersionedOptions } from '../types';
 
 import { StorageAccessMock } from '../internal';
 
@@ -15,7 +15,7 @@ describe('persistentAndVersioned', () => {
 
   let storageMock: Storage;
   let driver: DOMStorageDriver;
-  let options: VersionedOptionsTypes;
+  let options: VersionedOptions;
   let scheduler: TestScheduler;
 
   beforeEach(() => {

@@ -1,6 +1,6 @@
-import { StorageDriverTypes, StorageResult } from '../types';
+import { StorageDriver, StorageResult } from '../types';
 
-export class DOMStorageDriver implements StorageDriverTypes {
+export class DOMStorageDriver implements StorageDriver {
   constructor(private readonly storage: Storage) {
   }
 
