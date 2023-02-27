@@ -1,32 +1,42 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "allowUnreachableCode": false,
     "baseUrl": "./",
-    "declaration": true,
-    "downlevelIteration": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "inlineSources": true,
-    "module": "es2015",
-    "moduleResolution": "node",
-    "noImplicitAny": true,
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "exactOptionalPropertyTypes": false,
+    "strict": false,
+    "paths": {
+      "@elemental-concept/rx-persist": [
+        "dist/lib"
+      ],
+    },
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "noImplicitAny": false,
     "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "outDir": "./dist/",
+    "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
-    "strict": true,
-    "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "strictPropertyInitialization": false,
     "lib": [
-      "es2018",
+      "ES2022",
       "dom"
     ]
   },
-  "exclude": [
-    "**/*.spec.ts",
-    "./ng-sample-app/**/*.*"
-  ]
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
 }
