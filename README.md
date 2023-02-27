@@ -80,7 +80,7 @@ $ yarn add @elemental-concept/rx-persist
 
 ## Example
 
-Check [this example](https://github.com/elementalconcept/rx-persist/src/app) for a simple usage
+Check [this example](https://github.com/elementalconcept/rx-persist/tree/upgrade/src/app) for a simple usage
 example in an Angular application.
 
 ## API
