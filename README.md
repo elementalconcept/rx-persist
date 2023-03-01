@@ -4,7 +4,15 @@
 emission into selected storage and restores last emission from storage on Subject creation. Additionally, provides
 storage versioning with `persistentAndVersioned` operator.
 
-## Use-case example
+| Last version | Angular Versions       | Node | Typescript |
+|--------------|------------------------|------|------------|
+| `1.0.0`      | 9+ up to 15 (included) | 14   | 4.6        |
+
+## 📖 Installation
+
+- With **npm**: `npm i --save @elemental-concept/rx-persist`
+
+## 📖 Use-case example
 
 Imagine you're working on a front-end application for an online clothing shop, and you want your users to be able to
 filter products by size and colour. You might define the following interface to describe such filter:
@@ -62,20 +70,6 @@ export class ProductsService {
 
   // ...
 }
-```
-
-## Installation
-
-Using npm:
-
-```shell
-$ npm i @elemental-concept/rx-persist
-```
-
-Using Yarn:
-
-```shell
-$ yarn add @elemental-concept/rx-persist
 ```
 
 ## Example
